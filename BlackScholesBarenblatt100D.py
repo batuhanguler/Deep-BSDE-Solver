@@ -1,29 +1,10 @@
-"""
-@author: Maziar Raissi
-"""
-
 import numpy as np
-import tensorflow as tf
 import torch
+import matplotlib.pyplot as plt
+import time
+
 from FBSNNs import FBSNN
-import matplotlib.pyplot as plt
-from plotting import newfig, savefig
-import random
 
-import numpy as np
-import torch
-import matplotlib.pyplot as plt
-
-"""
-@author: Batuhan Guler  
-"""
-
-import numpy as np
-
-import torch
-import matplotlib.pyplot as plt
-from FBSNNs import FBSNN
-# from plotting import newfig, savefig
 
 class BlackScholesBarenblatt(FBSNN):
     def __init__(self, Xi, T, M, N, D, layers, mode, activation):
@@ -48,20 +29,6 @@ def u_exact(t, X):  # (N+1) x 1, (N+1) x D
     r = 0.05
     sigma_max = 0.4
     return np.exp((r + sigma_max ** 2) * (T - t)) * np.sum(X ** 2, 1, keepdims=True)  # (N+1) x 1
-
-
-if __name__ == "__main__":
-    tot = time.time()
-    M = 100  # number of trajectories (batch size)
-    N = 50  # number of time snapshots
-    D = 100  # number of dimensions
-
-    layers = [D + 1] + 4 * [256] + [1]
-
-    Xi = np.array([1.0, 0.5] * int(D / 2))[None, :]
-    T = 1.0
-
-    # Training
 
 
 def run_model(model, N_Iter, learning_rate):
@@ -120,3 +87,23 @@ def run_model(model, N_Iter, learning_rate):
     plt.title(str(D) + '-dimensional Black-Scholes-Barenblatt, ' + model.mode + "-" + model.activation)
     plt.legend()
     plt.savefig(str(D) + '-dimensional Black-Scholes-Barenblatt, ' + model.mode + "-" + model.activation)
+
+
+if __name__ == "__main__":
+    tot = time.time()
+    M = 100  # number of trajectories (batch size)
+    N = 50  # number of time snapshots
+    D = 100  # number of dimensions
+
+    layers = [D + 1] + 4 * [256] + [1]
+
+    Xi = np.array([1.0, 0.5] * int(D / 2))[None, :]
+    T = 1.0
+
+    "Architectures"
+    mode = "FC"  # FC, Resnet and NAIS-Net are available
+    activation = "sine"  # sine and ReLU are available
+    model = BlackScholesBarenblatt(Xi, T,
+                                   M, N, D,
+                                   layers, mode, activation)
+    run_model(model, 2*10**4, 1e-3)

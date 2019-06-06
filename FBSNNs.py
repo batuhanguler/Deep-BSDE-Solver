@@ -1,8 +1,3 @@
-"""
-@author: Batuhan Guler
-"""
-
-
 import numpy as np
 from abc import ABC, abstractmethod
 import time
@@ -11,14 +6,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-
-
-class sinus_activation(nn.Module):
-    def __init__(self):
-        super(sinus_activation, self).__init__()
-
-    def forward(self, x):
-        return torch.sin(x)
+from Models import Resnet, Sine
 
 
 class FBSNN(ABC):
@@ -42,10 +30,10 @@ class FBSNN(ABC):
         self.M = M  # number of trajectories
         self.N = N  # number of time snapshots
         self.D = D  # number of dimensions
-        self.mode = mode
+        self.mode = mode  # architecture: FC, Resnet and NAIS-Net are available
         self.activation = activation
         if activation == "Sine":
-            self.activation_function = sinus_activation()
+            self.activation_function = Sine()
         elif activation == "ReLU":
             self.activation_function = nn.ReLU()
 
