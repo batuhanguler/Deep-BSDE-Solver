@@ -121,7 +121,7 @@ class FBSNN(ABC):
 
         return loss, X, Y, Y[0, 0, 0]
 
-    def fetch_minibatch(self):  ## Generate time + a Brownian motion
+    def fetch_minibatch(self):  # Generate time + a Brownian motion
         T = self.T
 
         M = self.M

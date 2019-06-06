@@ -31,7 +31,7 @@ class Resnet(nn.Module):
         self.epsilon = 0.01
         self.stable = stable
 
-    def stable_forward(self, layer, out):
+    def stable_forward(self, layer, out):  # Building block for the NAIS-Net
 
         weights = layer.weight
         delta = 1 - 2 * self.epsilon

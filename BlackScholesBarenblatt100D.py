@@ -100,7 +100,7 @@ if __name__ == "__main__":
     Xi = np.array([1.0, 0.5] * int(D / 2))[None, :]
     T = 1.0
 
-    "Architectures"
+    "Available architectures"
     mode = "FC"  # FC, Resnet and NAIS-Net are available
     activation = "sine"  # sine and ReLU are available
     model = BlackScholesBarenblatt(Xi, T,
