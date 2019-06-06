@@ -1,5 +1,6 @@
 # Deep-bsde-solver-
 
 
-![image]{plots/comparison.png}
+![image](plots/comparison.png)
+
 
