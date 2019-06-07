@@ -28,7 +28,7 @@ Different architectures are available changing the **mode** and **activation** v
 ## Architectures
 
 
-_**`Full-connected`**_ 
+_**`Fully-connected`**_ 
 
 A Pytorch version of [Forward-Backward Stochastic Neural Networks: Deep Learning of High-dimensional Partial Differential Equations](https://arxiv.org/pdf/1804.07010.pdf), a work from Maziar Raissi, is proposed. A simple fully-connected neural network with 5 layers of 256 parameters is implemented.
 
