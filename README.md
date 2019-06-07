@@ -1,6 +1,6 @@
 # Deep BSDE Solver
 
-This project is part of my master thesis at Imperial College, under the supervision of Panos Parpas. We propose a deep learning approache to solve partial differential equations. The 
+This project is part of my master thesis at Imperial College of London. We propose a deep learning approach to solve high-dimensional partial differential equations. The solver is tested on the Black-Scholes Barenblatt equation in 100 dimensions. 
 
 ## Usage
 
