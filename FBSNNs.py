@@ -51,6 +51,10 @@ class FBSNN(ABC):
             self.model = Resnet(layers, stable=True, activation=self.activation_function).to(self.device)
         elif self.mode == "Resnet":
             self.model = Resnet(layers, stable=False, activation=self.activation_function).to(self.device)
+        elif self.mode == "Verlet":
+            self.model = VerletNet(layers, activation=self.activation_function).to(self.device)
+        elif self.mode == "SDEnet":
+            self.model = SDEnet(layers, activation=self.activation_function).to(self.device)
 
         self.model.apply(self.weights_init)
 
